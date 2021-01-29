@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>Facebook Login Test</title>
+    </head>
+    <body>
+        <script>
+         window.fbAsyncInit = function() {
+             FB.init({
+                 appId            : '740426166609497',
+                 autoLogAppEvents : true,
+                 xfbml            : true,
+                 version          : 'v9.0'
+             });
+
+             FB.login(function(response) {
+                 if (response.authResponse) {
+                     console.log('Welcome!  Fetching your information.... ');
+                     FB.api('/me', function(response) {
+                         console.log('Good to see you, ' + response.name + '.');
+                     });
+                 } else {
+                     console.log('User cancelled login or did not fully authorize.');
+                 }
+             });
+         };
+        </script>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+        <h1>It works!</h1>
+    </body>
+</html>
