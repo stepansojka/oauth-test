@@ -4,17 +4,14 @@
     </head>
     <body>
         <script>
-         window.fbAsyncInit = function() {
-             FB.init({
+         window.fbAsyncInit = () => FB.init({
                  appId            : '740426166609497',
                  autoLogAppEvents : true,
                  xfbml            : true,
                  version          : 'v9.0'
              });
-         };
 
-         window.login = function(scope) {
-             FB.login(function(response) {
+         window.login = (scope) => FB.login((response) => {
                  if (response.authResponse) {
                      console.log('Welcome.');
                      console.log('Your access token is ' + response.authResponse.accessToken + '.');
@@ -32,7 +29,6 @@
                  scope: scope || 'email,user_likes,user_posts,user_photos',
                  return_scopes: true
              });
-         };
         </script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </body>
