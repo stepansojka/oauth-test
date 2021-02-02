@@ -13,26 +13,26 @@
              });
          };
 
-
          window.login = function(scope) {
              FB.login(function(response) {
                  if (response.authResponse) {
-                     console.log('Welcome!  Fetching your information.... ');
+                     console.log('Welcome.');
+                     console.log('Your access token is ' + response.authResponse.accessToken + '.');
+                     console.log('The scope of the token is [' + response.authResponse.grantedScopes + '].');
+
+                     console.log('Fetching your information... ');
                      FB.api('/me', function(response) {
                          console.log('Good to see you again, ' + response.name + '.');
-                         console.log('Your access token is ' + response.authResponse.accessToken + '.');
-                         console.log('The scope of the token is [' + response.authResponse.accessToken.grantedScopes + '].');
                      });
                  } else {
                      console.log('User cancelled login or did not fully authorize.');
                  }
              },
              {
-                 scope: scope || 'email,user_likes,user_posts,user_photos,user_comments',
+                 scope: scope || 'email,user_likes,user_posts,user_photos',
                  return_scopes: true
              });
          };
-
         </script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </body>
