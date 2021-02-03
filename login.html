@@ -11,6 +11,13 @@
                  version          : 'v9.0'
              });
 
+         // ====================================================================
+         // Log into Facebook
+         //
+         // example:
+         // login();
+         // login('email,user_likes,user_posts,user_photos,user_comments');
+         //
          window.login = (scope) => FB.login((response) => {
                  if (response.authResponse) {
                      console.log('Welcome.');
@@ -26,9 +33,21 @@
                  }
              },
              {
-                 scope: scope || 'email,user_likes,user_posts,user_photos',
+                 scope: scope || 'user_likes,user_events,user_photos,user_videos,user_friends,user_posts,user_link,email,public_profile',
                  return_scopes: true
-             });
+         });
+
+
+         // ====================================================================
+         // Publish to my feed
+         //
+         // example:
+         // publish('https://twitter.com/JiriStanisevsky/status/1355146537735778304');
+         //
+         window.publish = (link) => FB.ui({
+             method: 'feed', link
+         }, console.log);
+
         </script>
         <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
     </body>
